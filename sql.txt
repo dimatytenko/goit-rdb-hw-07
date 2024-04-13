@@ -1,0 +1,38 @@
+p1
+SELECT 
+    id,
+    date,
+    YEAR(date) AS year,
+    MONTH(date) AS month,
+    DAYOFMONTH(date) AS day
+FROM 
+    orders;
+
+p2
+SELECT 
+    id,
+    date AS original_date,
+    DATE_ADD(date, INTERVAL 1 DAY) AS updated_date
+FROM 
+    orders;
+
+p3
+SELECT 
+    id,
+    date AS original_date,
+    UNIX_TIMESTAMP(date) AS seconds_since_epoch
+FROM 
+    orders;
+
+p4
+SELECT COUNT(*) AS rows_count
+FROM orders
+WHERE date >= '1996-07-10 00:00:00' AND date < '1996-10-08 00:00:00';
+
+p5
+SELECT 
+    id,
+    date,
+    JSON_OBJECT('id', id, 'date', date) AS json_data
+FROM 
+    orders;
